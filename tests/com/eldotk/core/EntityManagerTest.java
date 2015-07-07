@@ -16,12 +16,8 @@ public class EntityManagerTest {
     UUID entity2;
     UUID entity3;
 
-    @Rule
-    public ExpectedException expectedException;
-
     @Before
     public void setUp() {
-        expectedException = ExpectedException.none();
 
         entity1 = entityManager.createEntity();
         entity2 = entityManager.createEntity();

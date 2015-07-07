@@ -4,9 +4,6 @@ import com.eldotk.exceptions.*;
 
 import java.util.*;
 
-/**
- * Created by Elka on 06/07/2015.
- */
 public class EntityManager {
 
     protected List<UUID> entities;
@@ -18,6 +15,22 @@ public class EntityManager {
         entities = new LinkedList<>();
         components = new HashMap<>();
 
+    }
+
+    public List<UUID> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<UUID> entities) {
+        this.entities = entities;
+    }
+
+    public HashMap<Class, HashMap<UUID, ? extends IComponent>> getComponents() {
+        return components;
+    }
+
+    public void setComponents(HashMap<Class, HashMap<UUID, ? extends IComponent>> components) {
+        this.components = components;
     }
 
     public UUID createEntity() {
@@ -38,19 +51,17 @@ public class EntityManager {
 
     }
 
-    public List<UUID> getEntities() {
-        return entities;
+    public void clear() {
+        components = new HashMap<>();
+        entities = new LinkedList<>();
     }
 
-    public void setEntities(List<UUID> entities) {
-        this.entities = entities;
+    public void addEntity(UUID entity) throws EntityException {
+        if (entities.contains(entity)) {
+            throw new EntityException("There already an entity with UUID: " + entity.toString());
+        } else {
+            entities.add(entity);
+        }
     }
 
-    public HashMap<Class, HashMap<UUID, ? extends IComponent>> getComponents() {
-        return components;
-    }
-
-    public void setComponents(HashMap<Class, HashMap<UUID, ? extends IComponent>> components) {
-        this.components = components;
-    }
 }

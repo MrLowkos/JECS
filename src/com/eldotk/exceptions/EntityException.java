@@ -1,8 +1,5 @@
 package com.eldotk.exceptions;
 
-/**
- * Created by Elka on 06/07/2015.
- */
 public class EntityException extends Exception {
 
     public EntityException() {
